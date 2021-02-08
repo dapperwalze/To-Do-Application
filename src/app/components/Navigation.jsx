@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 
 const Navigation = ()=>(
-    <div>
+    <div className="mt-4">
         <Link to="/dashboard">
-            <h1>
+            <h1 className="text-center">
                 WalzeApp
             </h1>
         </Link>

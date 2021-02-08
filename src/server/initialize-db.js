@@ -7,7 +7,7 @@ async function initializeDB() {
     console.log("User?", user);
     if (!user) {
         for (let collectionName in defaultState) {
-            console.log("initiializing", collectionName);
+            console.log("initializing", collectionName);
             let collection = db.collection(collectionName);
             await collection.insertMany(defaultState[collectionName]);
         }

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import * as mutations from '../store/mutations';
 
 const LoginComponent = ({authenticateUser, authenticated})=> {
-    return <div className="card p-3 col-6">
+    return <div style={{marginLeft: "30%", marginTop: "50px"}} className="card p-3 col-5">
         <h2>
             Login
         </h2>

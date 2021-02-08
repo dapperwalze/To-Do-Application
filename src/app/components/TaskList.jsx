@@ -6,14 +6,14 @@ import { requestTaskCreation } from '../store/mutations';
 
 export const TaskList = ({tasks, name, id, createNewTask}) => (
 
-    <div className="card p-2 m-2">
-        <h3>
+    <div className="card p-2 m-2 ">
+        <h3 className="text-center">
             {name}
         </h3>
         <div>
             {tasks.map(task=> (
                 <Link to={`/tasks/${task.id}`} key={task.id}> 
-                    <div className="card p-2 mt-2">{task.name}</div>
+                    <div className="card p-2 mt-2 text-center">{task.name}</div>
                 </Link>))}
         </div>
         <button onClick={ ()=>createNewTask(id)} className="btn btn-primary btn-block mt-2">Add Task</button>
