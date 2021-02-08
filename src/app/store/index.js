@@ -10,16 +10,31 @@ import * as mutations from './mutations';
 
 export const store = createStore(
     combineReducers({
-        tasks(tasks = defaultState.tasks, action){
+        session(Usersession = defaultState.session || {}, action){
+            let {type,authenticated,session} = action;
+            switch (type) {
+                case mutations.SET_STATE:
+                    return {...Usersession, id:action.state.session.id}
+                case mutations.REQUEST_AUTHENTICATE_USER:
+                    return{...Usersession, authenticated:mutations.AUTHENTICATING};
+                case mutations.PROCESSING_AUTHENTICATE_USER:
+                    return {...Usersession, authenticated};
+                default:
+                    return Usersession;
+            }
+        },
+        tasks(tasks = [], action){
             switch(action.type) {
+                case mutations.SET_STATE:
+                    return action.state.tasks;
                 case mutations.CREATE_TASK:
-                return [...tasks, {
-                    id: action.taskID,
-                    name: "New Task",
-                    group: action.groupID,
-                    owner: action.ownerID,
-                    isComplete: false
-                }]
+                    return [...tasks, {
+                        id: action.taskID,
+                        name: "New Task",
+                        group: action.groupID,
+                        owner: action.ownerID,
+                        isComplete: false
+                    }]
 
                 case mutations.SET_TASK_COMPLETE:
                     return tasks.map(task=>{
@@ -38,13 +53,17 @@ export const store = createStore(
             }
             return tasks;
         },
-        comments (comments = defaultState.comments){
+        comments (comments = []){
             return comments;
         },
-        groups (groups = defaultState.groups){
+        groups (groups = [], action){
+            switch (action.type) {
+                case mutations.SET_STATE:
+                    return action.state.groups;
+            }
             return groups;
         },
-        users (users = defaultState.users){
+        users (users = []){
             return users;
         }
     }),
