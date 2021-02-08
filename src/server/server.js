@@ -23,7 +23,7 @@ app.use(
 
 authenticationRoute(app);
 
-if (true) {
+if (process.env.NODE_ENV == `production`) {
     console.log(__dirname);
     console.log(path.resolve(__dirname, 'dist'))
     app.use(express.static(path.resolve(__dirname, '../dist')));
