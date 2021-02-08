@@ -24,10 +24,6 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/node": "^7.12.13",
-    "@babel/preset-env": "^7.12.13",
-    "@babel/preset-react": "^7.12.13",
-    "@babel/register": "^7.12.13",
-    "babel-loader": "^8.2.2",
     "body-parser": "^1.18.3",
     "concurrently": "^4.0.1",
     "cors": "^2.8.4",
@@ -40,6 +36,10 @@
   "dependencies": {
     "@babel/cli": "^7.12.13",
     "@babel/core": "^7.12.13",
+    "@babel/preset-env": "^7.12.13",
+    "@babel/preset-react": "^7.12.13",
+    "@babel/register": "^7.12.13",
+    "babel-loader": "^8.2.2",
     "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "history": "^4.7.2",

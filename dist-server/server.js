@@ -32,7 +32,7 @@ app.use((0, _cors.default)(), _bodyParser.default.urlencoded({
 }), _bodyParser.default.json());
 (0, _authenticate.authenticationRoute)(app);
 
-if (true) {
+if (process.env.NODE_ENV == `production`) {
   console.log(__dirname);
   console.log(_path.default.resolve(__dirname, 'dist'));
   app.use(_express.default.static(_path.default.resolve(__dirname, '../dist')));
