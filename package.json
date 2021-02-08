@@ -10,22 +10,23 @@
   "scripts": {
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run server",
+    "start": "npm run clean && npm run transpile && npm run server",
     "dev": "webpack serve --open",
     "initialize": "babel-node src/server/initialize-db",
-    "server": "babel-node src/server/server",
+    "server": "node ./dist-server/server.js",
     "server-test": "babel-node src/server/server.spec",
-    "start-dev": "concurrently \"npm run server\" \"npm run dev\""
+    "start-dev": "concurrently \"npm run server\" \"npm run dev\"",
+    "transpile": "babel src/server --out-dir dist-server",
+    "clean": "rimraf dist-server"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.12.13",
-    "@babel/node": "^7.0.0",
+    "@babel/node": "^7.12.13",
     "@babel/preset-env": "^7.12.13",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/register": "^7.0.0",
+    "@babel/preset-react": "^7.12.13",
+    "@babel/register": "^7.12.13",
     "babel-loader": "^8.2.2",
     "body-parser": "^1.18.3",
     "concurrently": "^4.0.1",
@@ -37,8 +38,10 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@babel/cli": "^7.12.13",
+    "@babel/core": "^7.12.13",
     "axios": "^0.21.1",
-    "babel-cli": "^6.26.0",
+    "dotenv": "^8.2.0",
     "history": "^4.7.2",
     "md5": "^2.3.0",
     "react": "^17.0.1",
@@ -49,6 +52,7 @@
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
     "redux-saga": "^0.16.2",
+    "rimraf": "^3.0.2",
     "uuid": "^8.3.2"
   }
 }

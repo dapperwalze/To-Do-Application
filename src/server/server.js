@@ -23,10 +23,12 @@ app.use(
 
 authenticationRoute(app);
 
-if (process.env.NODE_ENV == `production`) {
-    app.use(express.static(path.resolve(__dirname,`../../dist`)));
+if (true) {
+    console.log(__dirname);
+    console.log(path.resolve(__dirname, 'dist'))
+    app.use(express.static(path.resolve(__dirname, '../dist')));
     app.get('/*', (req, res)=>{
-        res.sendFile(path.resolve('index.html'));
+        res.sendFile(path.resolve(__dirname,`../dist`, 'index.html'));
     });
 }
 
