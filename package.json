@@ -13,7 +13,7 @@
     "build_client": "webpack --mode production",
     "dev": "concurrently \"npm run server\" \"webpack serve --open\"",
     "server-test": "babel-node src/server/server.spec",
-    "server": "nodemon --exec babel-node -- ./src/server/server.js",
+    "server": "nodemon --exec babel-node -- ./src/server/server.js"
   },
   "keywords": [],
   "author": "",
