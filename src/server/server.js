@@ -2,13 +2,14 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import { connectDB } from './connect-db';
-import './initialize-db';
+import initializeDB from './initialize-db';
 import { authenticationRoute } from "./authenticate";
 import path from 'path';
 
 let port = process.env.PORT || 7777;
 let app = express();
 
+initializeDB()
 app.listen(port, console.log("Server listening on port: ", port));
 
 //app.get('/', (req, res)=>{
@@ -22,15 +23,13 @@ app.use(
 );
 
 authenticationRoute(app);
+app.post('/authenticate', (req, res) => console.log('got here'))
 
-if (process.env.NODE_ENV == `production`) {
-    console.log(__dirname);
-    console.log(path.resolve(__dirname, 'dist'))
     app.use(express.static(path.resolve(__dirname, '../dist')));
     app.get('/*', (req, res)=>{
         res.sendFile(path.resolve(__dirname,`../dist`, 'index.html'));
     });
-}
+
 
 export const addNewTask = async task=>{
     let db = await connectDB();

@@ -16,4 +16,4 @@ async function initializeDB() {
     
 }
 
-initializeDB();
+export default initializeDB;
